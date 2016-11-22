@@ -5,7 +5,7 @@
     // SVGの枠の大きさ
     // widthはコンテナの大きさに合わせて自動調整する
     var width = 800;
-    var height = 1500;
+    var height = 800;
 
     // 'g'の描画領域となるデフォルトのマージン
     var margin = {
@@ -19,13 +19,6 @@
     // 軸や凡例がはみ出てしまうので、マージンの分だけ小さくしておく。
     var w = width - margin.left - margin.right;
     var h = height - margin.top - margin.bottom;
-
-    //
-    // クラス名定義
-    //
-
-    // 一番下のレイヤ
-    var CLASS_BASE_LAYER = 'cdp-base-layer';
 
     // ノードの中の箱の大きさ
     var boxHeight = 20;
@@ -91,12 +84,12 @@
           .attr('height', height);
 
         // svgの上にチャート描画領域'g'を追加
-        var layerAll = svg.selectAll('.' + CLASS_BASE_LAYER).data(['dummy']);
+        var layerAll = svg.selectAll('.cdp-base-layer').data(['dummy']);
         layer = layerAll
           // ENTER領域
           .enter()
           .append('g')
-          .classed(CLASS_BASE_LAYER, true)
+          .classed('cdp-base-layer', true)
           // ENTER + UPDATE領域
           .merge(layerAll)
           .attr('width', w)
@@ -195,7 +188,7 @@
       }
 
       // d3.hierarchy()を通すことで、ツリーレイアウトに必要なプロパティ情報を追加したルートノードを作る
-      // d3.js version 4でここの挙動が変わっている
+      // d3.js version 4はこの挙動が変わっている
       // 元のデータに直接プロパティを追加するのではなく、node.dataに元データを移している
       // node.data - the associated data, as specified to the constructor
       // node.depth - zero for the root node, and increasing by one for each descendant generation
@@ -222,8 +215,11 @@
       }
 
       var treeHeight = (boxHeight + 5) * tree.children.length;
-      if (treeHeight > h - 10) {
-        treeHeight = h - 10;
+      console.log('treeHeight=' + treeHeight);
+      console.log('h=' + h);
+      if (treeHeight > h) {
+        exports.height(treeHeight + margin.top + margin.bottom + 100); // よくわからんが100くらい足さないと
+        svg.attr('height', height);
       }
 
       // ツリーレイアウトを作る
