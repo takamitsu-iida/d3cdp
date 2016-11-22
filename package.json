@@ -1,0 +1,24 @@
+{
+  "name": "d3cdp",
+  "version": "1.0.0",
+  "description": "Catalystスイッチのshow cdp neighborsコマンドのログを可視化します。",
+  "main": "d3cdp.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takamitsu-iida/d3cdp.git"
+  },
+  "author": "Takamitsu IIDA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/takamitsu-iida/d3cdp/issues"
+  },
+  "homepage": "https://github.com/takamitsu-iida/d3cdp#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^2.0.0"
+  }
+}
