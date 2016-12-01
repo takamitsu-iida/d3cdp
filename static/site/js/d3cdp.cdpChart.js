@@ -20,6 +20,9 @@
     var w = width - margin.left - margin.right;
     var h = height - margin.top - margin.bottom;
 
+    // ダミーデータ
+    var dummy = ['dummy'];
+
     // ノードの中の箱の大きさ
     var boxHeight = 20;
     var portWidth = 55;
@@ -75,7 +78,7 @@
         initDeviceSelector();
 
         // svgを作成する
-        var svgAll = container.selectAll('svg').data(['dummy']);
+        var svgAll = container.selectAll('svg').data(dummy);
         svg = svgAll
           .enter()
           .append('svg')
@@ -84,7 +87,7 @@
           .attr('height', height);
 
         // svgの上にチャート描画領域'g'を追加
-        var layerAll = svg.selectAll('.cdp-base-layer').data(['dummy']);
+        var layerAll = svg.selectAll('.cdp-base-layer').data(dummy);
         layer = layerAll
           // ENTER領域
           .enter()
@@ -114,7 +117,7 @@
     }
 
     function initLocalSelector() {
-      var localSelectorAll = container.selectAll('.cdp-local-selector').data(['dummy']);
+      var localSelectorAll = container.selectAll('.cdp-local-selector').data(dummy);
       var localSelector = localSelectorAll
         .enter()
         .append('div')
@@ -139,7 +142,7 @@
     }
 
     function initDeviceSelector() {
-      var deviceSelectorAll = container.selectAll('.cdp-device-selector').data(['dummy']);
+      var deviceSelectorAll = container.selectAll('.cdp-device-selector').data(dummy);
       var deviceSelector = deviceSelectorAll
         .enter()
         .append('div')

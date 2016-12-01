@@ -12,6 +12,9 @@
     // 選択されているリンク
     var selectedIndex = 0;
 
+    // ダミーデータ
+    var dummy = ['dummy'];
+
     // カスタムイベント
     var dispatch = d3.dispatch('selectedIndexChanged');
 
@@ -41,7 +44,7 @@
         // </div>
 
         // 全体を束ねるグループ
-        var contentsAll = container.selectAll('.rl-contents').data(['dummy']);
+        var contentsAll = container.selectAll('.rl-contents').data(dummy);
         var contents = contentsAll
           .enter()
           .append('div')
